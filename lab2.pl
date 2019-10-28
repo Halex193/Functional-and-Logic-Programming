@@ -17,7 +17,7 @@ find(K1, [_|L], F):-K11 is K1 -1, find(K11, L, F).
 % sublist(M: the first index, N: the last index, L: the list, L2: the sublist)
 % flow (i, i, i, o)
 sublist(_, _, [], _):-!, fail.
-sublist(M, N, _, _):-M > N, !, fail.
+sublist(M, N, _, []):-M > N, !.
 sublist(_, N, [H|_], [H]):-N == 0, !.
 sublist(M, N, [H|L], [H|L2]):-M =< 0, !, M2 is M - 1, N2 is N - 1, sublist(M2, N2, L, L2).
 sublist(M, N, [_|L], L2):-M2 is M - 1, N2 is N - 1, sublist(M2, N2, L, L2).

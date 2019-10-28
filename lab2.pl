@@ -1,15 +1,17 @@
 % P1 : 11
-% substitutes elements with given indexes in the list
-% substitute(K1: position 1, K2: position 2, L: list, EL1: the first substituted element,
-% EL2: the second substituted element, L2: the resulting list)
-% flow (i, i, i, o, o, o)
-substitute(_, _, [], _, _):-!, fail.
-substitute(_, K2, _, _, _):-K2 < 0, !, fail.
-substitute(K1, K2, [H|L], H, H, [H|L]):- K1 == K2, K1 == 0, !.
-substitute(K1, K2, L, EL1, EL2, L2):-K1 > K2, !, substitute(K2, K1, L, EL1, EL2, L2).
-substitute(K1, K2, [H|L], H, EL2, [EL2|L2]):-K1 == 0, !, K22 is K2 - 1, substitute(-1, K22, L, H, EL2, L2).
-substitute(_, K2, [H|L], EL1, H, [EL1|L]):-K2 == 0, !.
-substitute(K1, K2, [H|L], EL1, EL2, [H|L2]):-K12 is K1 -1, K22 is K2 - 1, substitute(K12, K22, L, EL1, EL2, L2).
+% substitutes an element with another element
+% substitute(K1: position 1, K2: position 2, L: list, L2: the resulting list)
+% flow (i, i, i, o)
+substitute(_, _, [], []):-!.
+substitute(K1, K2, [H|L], [H|L2]):-K1 \= 0, !, K11 is K1 - 1, K21 is K2 -1, substitute(K11, K21, L, L2).
+substitute(K1, K2, [H|L], [F|L2]):- find(K2, [H|L], F), K11 is K1 - 1, K21 is K2 -1, substitute(K11, K21, L, L2).
+
+% finds an element in a list by its index
+% find(K1: index, L: list, F: the found element)
+% flow (i, i, o)
+find(_, [], _):-!, fail.
+find(K1, [H|_], H):-K1 == 0, !.
+find(K1, [_|L], F):-K11 is K1 -1, find(K11, L, F).
 
 % creates a sublist from a list between the specified indexes
 % sublist(M: the first index, N: the last index, L: the list, L2: the sublist)

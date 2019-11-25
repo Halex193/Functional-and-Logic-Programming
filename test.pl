@@ -13,7 +13,7 @@ substituteMinimum(L, S, R):- minimum(L, M), substituteElement(M, L, S, R).
 % appendList(L: beggining list, S: ending list, R: result list)
 % Concatenates the given lists into one
 % flow (i, i, o)
-appendList([H], S, [H|S]):- !.
+appendList([], S, S):- !.
 appendList([H|T], S, [H|R]):- appendList(T, S, R).
 
 % substituteElement(E: element, L: list of integers, S: substitution list, R: result list)

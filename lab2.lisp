@@ -1,5 +1,6 @@
 (DEFUN changeType (l)
   (COND
+    ((NULL l) nil)
     ((= (CADR l) 0)
       (CONS (LIST (CAR l)) (CDDR l))
     )

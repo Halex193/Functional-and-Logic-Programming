@@ -1,3 +1,5 @@
+;9. Convert a tree of type (1) to type (2).
+;l: list -> dotted pair (list, list)
 (DEFUN changeType (l)
   (COND
     ((NULL l) nil)
@@ -18,7 +20,7 @@
     )
   )
 )
-
+;l: list -> list
 (DEFUN changeTypeWrapper (l)
   (CAR (changeType l))
 )

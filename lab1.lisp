@@ -31,7 +31,7 @@
   )
 )
 
-;(write (replaceElement 1 '((4 1) 2 1 3) '(12)))
+;(write (replaceElement 1 '((4 1) 2 1 3) '(1 2)))
 
 ;9 c) Write a function to determines the sum of two numbers in list representation, and returns the
 ;corresponding decimal number, without transforming the representation of the number from list to
@@ -74,7 +74,7 @@
   (/ (- a (mod a b)) b)
 )
 
-;(write (decimalSum '(1 0 0) '(1)))
+;(write (decimalSum '(9 8) '(1)))
 
 ;9 d) Write a function to return the greatest common divisor of all numbers in a linear list
 ;a: number, b:number -> number
@@ -94,4 +94,4 @@
   )
 )
 
-;(write (gcdlist '(230 400)))
+(write (gcdlist '(2 6)))
